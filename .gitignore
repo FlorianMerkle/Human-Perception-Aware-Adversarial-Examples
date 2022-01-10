@@ -2,6 +2,8 @@
 batchwise-cw-with-et-loss.ipynb
 /data/*
 /models/*
+/figs/*
+/inv-based-advs/*
 /adversarial_examples/*
 foolbox-custom-cw-test.ipynb
 FMNIST-model.ipynb
