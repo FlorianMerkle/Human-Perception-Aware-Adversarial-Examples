@@ -3,7 +3,7 @@ import torch, torchvision
 from torchvision import models
 from torch import nn
 
-#import pruning_utils
+import pruning_utils
 
 
 
@@ -33,11 +33,11 @@ def load_resnet(MODEL_PATH, norm_layer=True, pruned=False):
     else:
         resnet = base_resnet
         
-#    if pruned==True:
-#        modules_to_prune = pruning_utils.get_prunable_modules(resnet)
-#        pruning_utils.l1_prune(modules_to_prune, .0)
-#    print('yo')
-#    print(type(resnet))
+    if pruned==True:
+        modules_to_prune = pruning_utils.get_prunable_modules(resnet)
+        pruning_utils.l1_prune(modules_to_prune, .0)
+    print('yo')
+    print(type(resnet))
     state_dict = torch.load(MODEL_PATH)
     resnet.load_state_dict(state_dict)
     model = resnet
@@ -56,9 +56,9 @@ def load_vgg(MODEL_PATH, norm_layer=False, pruned=False):
             vgg16
         )
         
-#    if pruned==True:
-#        modules_to_prune = pruning_utils.get_prunable_modules(vgg16)
-#        pruning_utils.l1_prune(modules_to_prune, .0)
+    if pruned==True:
+        modules_to_prune = pruning_utils.get_prunable_modules(vgg16)
+        pruning_utils.l1_prune(modules_to_prune, .0)
     state_dict = torch.load(MODEL_PATH)
     vgg16.load_state_dict(state_dict)
     vgg16.eval()
